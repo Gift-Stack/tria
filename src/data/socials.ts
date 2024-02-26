@@ -29,14 +29,21 @@ export const eoas = [
     url: "https://metamask.io/",
     icon: "/icons/metamask.svg",
     connector: metaMask(),
+    color: "white",
   },
   {
     name: "WalletConnect",
     url: "https://walletconnect.org/",
     icon: "/icons/walletconnect.svg",
     connector: null,
+    color: "#3B99FC",
   },
 ] as const;
 
 export type Social = (typeof socials)[number];
 export type Eoa = (typeof eoas)[number];
+export enum ActiveState {
+  SOCIALS = "social",
+  NAME = "name",
+  LOADING = "loading",
+}

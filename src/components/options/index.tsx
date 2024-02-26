@@ -1,20 +1,21 @@
 "use client";
-import React, { useState } from "react";
-import { socials, eoas } from "@/data/socials";
-import Lottie from "react-lottie";
-import gridLoaderAnimationData from "@/lotties/loader-grid.json";
+import React from "react";
+import { socials, eoas, ActiveState } from "@/data/socials";
 import SocialsList from "./socials";
 import TriaName from "./name";
 import { CreateConnectorFn, useConnect } from "wagmi";
-
-enum ActiveState {
-  SOCIALS = 0,
-  NAME = 1,
-  LOADING = 2,
-}
+import Loader from "./loader";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const TriaCardOptions = () => {
-  const [active, setActive] = useState(ActiveState.SOCIALS);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const active = searchParams.get("active");
+
+  const setActive = (state: ActiveState) => {
+    router.push(`?active=${state}`);
+  };
+
   const { connectAsync } = useConnect();
 
   const connectWallet = async (connector: CreateConnectorFn | null) => {
@@ -29,30 +30,16 @@ const TriaCardOptions = () => {
   };
 
   if (active === ActiveState.LOADING)
-    return (
-      <Lottie
-        key={ActiveState.LOADING}
-        speed={2}
-        options={{ animationData: gridLoaderAnimationData }}
-        width="100%"
-        style={{
-          borderRadius: 20,
-          position: "absolute",
-          top: "0",
-          left: "0",
-          cursor: "auto",
-        }}
-      />
-    );
+    return <Loader key={ActiveState.LOADING} />;
   return (
-    <div className="bg-light-400 h-full rounded-2xl p-2 md:p-4">
+    <div className="bg-light-400 h-full rounded-2xl p-3 md:p-4">
       <SocialsList
         key={ActiveState.SOCIALS}
         socials={socials}
         eoas={eoas}
         maxList={2}
         nextPage={connectWallet}
-        className={`${active === ActiveState.SOCIALS ? "block" : "hidden"}`}
+        className={`${[ActiveState.SOCIALS as string, null].includes(active) ? "block" : "hidden"}`}
       />
 
       <TriaName

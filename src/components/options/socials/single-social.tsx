@@ -14,7 +14,7 @@ export const Social = ({ social, others }: SingleSocial) => {
       borderRadius="rounded-2xl"
       gradientBorder={isGoogle ? "bg-google-button" : "bg-light-800"}
       borderWidth="border-0.5"
-      className={`${isGoogle ? "hover:bg-google-button-active hover:text-dark-40" : "hover:shadow-social-item-active"} rounded-2xl- flex items-center gap-3 p-1.5 transition-all duration-200 ease-in-out md:p-2.5`}
+      className={`${isGoogle ? "hover:bg-google-button-active hover:text-dark-40" : "hover:shadow-social-item-active"} rounded-2xl- flex items-center gap-3 p-2 transition-all duration-200 ease-in-out md:p-2.5`}
     >
       {others ? (
         others.map((social, index) => (
@@ -30,7 +30,7 @@ export const Social = ({ social, others }: SingleSocial) => {
           <Image src={social.icon} alt={social.name} height={24} width={24} />
         </div>
       )}
-      <p className="text-light text-sm font-semibold md:text-base">
+      <p className="text-light text-[13px] font-semibold md:text-base">
         Continue with {others ? "others" : social.name}
       </p>
     </GradientButton>
