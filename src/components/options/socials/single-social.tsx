@@ -11,9 +11,9 @@ export const Social = ({ social, others }: SingleSocial) => {
   const isGoogle = social?.name === "Google";
   return (
     <GradientButton
-      borderRadius="2xl"
-      gradientBorder={isGoogle ? "google-button" : "light-800"}
-      borderWidth="0.5"
+      borderRadius="rounded-2xl"
+      gradientBorder={isGoogle ? "bg-google-button" : "bg-light-800"}
+      borderWidth="border-0.5"
       className={`${isGoogle ? "hover:bg-google-button-active hover:text-dark-40" : "hover:shadow-social-item-active"} rounded-2xl- flex items-center gap-3 p-1.5 transition-all duration-200 ease-in-out md:p-2.5`}
     >
       {others ? (

@@ -44,6 +44,7 @@ const config: Config = {
         },
         surface: {
           black: "#101010",
+          purple: "#7F43FF",
           700: "#333331",
           900: "#1A1A1A",
         },

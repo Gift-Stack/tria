@@ -9,13 +9,14 @@ interface SocialsListProps {
   eoas: Readonly<TEoa[]>;
   maxList: 2;
   nextPage: (connector: CreateConnectorFn | null) => Promise<void>;
+  className: string;
 }
 
 const SocialsList = (props: SocialsListProps) => {
-  const { eoas, socials, maxList, nextPage } = props;
+  const { className, eoas, socials, maxList, nextPage } = props;
   const postMax = socials.slice(maxList);
   return (
-    <>
+    <div className={className}>
       <div className="flex flex-col gap-3">
         {socials.slice(0, maxList).map((social) => (
           <Social social={social} key={social.name} />
@@ -34,7 +35,7 @@ const SocialsList = (props: SocialsListProps) => {
           <Eoa key={eoa.name} eoa={eoa} goToNextPage={nextPage} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

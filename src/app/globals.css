@@ -26,6 +26,37 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+/* Transition animation for component1 */
+.active {
+  transform: translateX(-100%);
+}
+.step.active {
+  transform: translateX(0); /* Current component stays in place */
+}
+
+.step.inactive {
+  transform: translateX(-100%); /* Component 1 moves left */
+}
+
+.animate-glow {
+  animation: glow 4s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    transform: translateX(-100%);
+  }
+  75% {
+    transform: translateX(30%);
+  }
+  77% {
+    transform: translateX(30%);
+  }
+  100% {
+    transform: translateX(130%);
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

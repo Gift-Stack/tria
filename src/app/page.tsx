@@ -1,7 +1,4 @@
 import TriaCard from "@/components/card";
-import Image from "next/image";
-import { socials, eoas } from "@/data/socials";
-import SocialsList from "@/components/options/socials";
 import TriaCardOptions from "@/components/options";
 
 export default function Home() {

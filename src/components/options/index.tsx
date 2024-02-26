@@ -46,22 +46,20 @@ const TriaCardOptions = () => {
     );
   return (
     <div className="bg-light-400 h-full rounded-2xl p-2 md:p-4">
-      {active === ActiveState.SOCIALS && (
-        <SocialsList
-          key={ActiveState.SOCIALS}
-          socials={socials}
-          eoas={eoas}
-          maxList={2}
-          nextPage={connectWallet}
-        />
-      )}
+      <SocialsList
+        key={ActiveState.SOCIALS}
+        socials={socials}
+        eoas={eoas}
+        maxList={2}
+        nextPage={connectWallet}
+        className={`${active === ActiveState.SOCIALS ? "block" : "hidden"}`}
+      />
 
-      {active === ActiveState.NAME && (
-        <TriaName
-          key={ActiveState.NAME}
-          nextPage={() => setActive(ActiveState.LOADING)}
-        />
-      )}
+      <TriaName
+        key={ActiveState.NAME}
+        nextPage={() => setActive(ActiveState.LOADING)}
+        className={`${active === ActiveState.NAME ? "block" : "hidden"}`}
+      />
     </div>
   );
 };

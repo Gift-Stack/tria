@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
-  borderRadius: string;
-  gradientBorder: string;
-  borderWidth: `${number}` | number | `[${string}px]`;
+  borderRadius: `rounded-${string}`;
+  gradientBorder: `bg-${string}`;
+  borderWidth: `border-${string}`;
 };
 
 export const GradientButton = forwardRef<React.ElementRef<"div">, Props>(
@@ -11,9 +11,9 @@ export const GradientButton = forwardRef<React.ElementRef<"div">, Props>(
     <div
       role="button"
       ref={ref}
-      className={`bg-${gradientBorder} rounded-${borderRadius} p-${borderWidth}`}
+      className={`${gradientBorder} ${borderRadius} ${borderWidth}`}
     >
-      <div className={`${className} rounded-${borderRadius}`} {...props}>
+      <div className={`${className} ${borderRadius}`} {...props}>
         {props.children}
       </div>
     </div>

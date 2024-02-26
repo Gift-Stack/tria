@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Eoa as TEoa } from "@/data/socials";
-import { metaMask } from "wagmi/connectors";
-import { Connector, CreateConnectorFn } from "wagmi";
+import { CreateConnectorFn } from "wagmi";
 
 export const Eoa = ({
   eoa,
