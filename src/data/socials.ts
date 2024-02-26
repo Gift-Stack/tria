@@ -1,3 +1,5 @@
+import { metaMask } from "wagmi/connectors";
+
 export const socials = [
   {
     name: "Google",
@@ -26,11 +28,13 @@ export const eoas = [
     name: "Metamask",
     url: "https://metamask.io/",
     icon: "/icons/metamask.svg",
+    connector: metaMask(),
   },
   {
     name: "WalletConnect",
     url: "https://walletconnect.org/",
     icon: "/icons/walletconnect.svg",
+    connector: null,
   },
 ] as const;
 

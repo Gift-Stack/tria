@@ -5,6 +5,7 @@ import Lottie from "react-lottie";
 import gridLoaderAnimationData from "@/lotties/loader-grid.json";
 import SocialsList from "./socials";
 import TriaName from "./name";
+import { CreateConnectorFn, useConnect } from "wagmi";
 
 enum ActiveState {
   SOCIALS = 0,
@@ -14,6 +15,18 @@ enum ActiveState {
 
 const TriaCardOptions = () => {
   const [active, setActive] = useState(ActiveState.SOCIALS);
+  const { connectAsync } = useConnect();
+
+  const connectWallet = async (connector: CreateConnectorFn | null) => {
+    if (!connector) {
+      alert(
+        "Wallet connect isn't available for this app... Please use MetaMask",
+      );
+      return;
+    }
+    await connectAsync({ connector });
+    setActive(ActiveState.NAME);
+  };
 
   if (active === ActiveState.LOADING)
     return (
@@ -39,7 +52,7 @@ const TriaCardOptions = () => {
           socials={socials}
           eoas={eoas}
           maxList={2}
-          nextPage={() => setActive(ActiveState.NAME)}
+          nextPage={connectWallet}
         />
       )}
 
